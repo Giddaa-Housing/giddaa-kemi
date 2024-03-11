@@ -12,10 +12,10 @@ ALLOWED_HOSTS = ["*"]
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "giddaa_kemi",
-        "USER": "kemiadmin",
-        "PASSWORD": "alvinkemi60$",
-        "HOST": "54.81.235.81",
+        "NAME": config("KEMI_NAME"),
+        "USER": config("KEMI_USER"),
+        "PASSWORD": config("KEMI_PASSWORD"),
+        "HOST": config("KEMI_HOST"),
         "PORT": "5432",
     },
     "giddaa_db": {
