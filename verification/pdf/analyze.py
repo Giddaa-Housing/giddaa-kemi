@@ -21,7 +21,6 @@ def get_document_file_by_id(document_id):
             )
 
             row = cursor.fetchone()
-            print("This is the row: ", row)
             if row:
                 # Assuming columns are id, name, description, extension, document, extraProperties
                 document_data = {
@@ -54,16 +53,16 @@ def convert_numpy(obj):
         return obj
 
 
-def get_pdf_category(public_url):
-    # document_data = get_document_file_by_id(document_id)
-    # public_url = document_data["cloudinary_link"]
+def get_pdf_category(document_id):
+    document_data = get_document_file_by_id(document_id)
+    public_url = document_data["cloudinary_link"]
 
     # Initialize PDFDataManager with the given PDF path
     pdf_data_manager = PDFDataManager(pdf_url=public_url)
     pdf_type = pdf_data_manager.categorize_pdf()
     print("PDF TYPE: ", pdf_type)
 
-    return pdf_type
+    return pdf_type, public_url
 
 
 def process_pdf_with_retry(pdf_type, public_url, max_retries=5):

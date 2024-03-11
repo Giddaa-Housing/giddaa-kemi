@@ -19,10 +19,10 @@ DATABASES = {
     },
     "giddaa_db": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": "giddaa",
-        "USER": "giddaadmin",
-        "PASSWORD": "rootadmin",
-        "HOST": "178.62.91.56",
+        "NAME": config("GIDDAA_NAME"),
+        "USER": config("GIDDAA_USER"),
+        "PASSWORD": config("GIDDAA_PASSWORD"),
+        "HOST": config("GIDDAA_HOST"),
         "PORT": "5432",
     },
 }

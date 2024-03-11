@@ -11,8 +11,8 @@ from decouple import config
 from django.conf import settings
 from django.core.mail import send_mail
 from django.db import connections
-from langchain.document_loaders import OnlinePDFLoader
 from langchain.text_splitter import RecursiveCharacterTextSplitter
+from langchain_community.document_loaders import OnlinePDFLoader
 
 from bankanalysis.configs.logging_config import configure_logger
 from helpers import chat_utils

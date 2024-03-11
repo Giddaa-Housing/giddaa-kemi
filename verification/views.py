@@ -99,16 +99,11 @@ def get_employment_verification_info(request, token):
 
 
 class BankStatementView(View):
-    def get(self, request):
+    def get(self, request, document_id):
         # public_url = "https://res.cloudinary.com/giddaa/image/upload/c_scale,w_1000/q_auto:good/133512587437717390.pdf"
 
-        # Get the public URL from query parameters
-        public_url = request.GET.get("url")
-        if not public_url:
-            return JsonResponse({"error": "URL parameter is missing"}, status=400)
-
         # Process the URL as before
-        pdf_type = get_pdf_category(public_url)
+        pdf_type, public_url = get_pdf_category(document_id)
 
         if pdf_type in [1, 2]:
             result = process_pdf_task.apply(args=[pdf_type, public_url]).get()
